@@ -13,7 +13,8 @@ private:
 public:
 	keyDetector();
 	~keyDetector();
-	string *findKeyFromText();
+	string	*findKeyFromText();
+	int		keysCounterFromFile();
 };
 
 

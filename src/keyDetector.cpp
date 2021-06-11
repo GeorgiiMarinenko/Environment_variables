@@ -8,9 +8,59 @@ keyDetector::keyDetector()
 keyDetector::~keyDetector()
 {}
 
-string *keyDetector::findKeyFromText() // Привинтивно расчитывать кол-во переменных окружения в файле
+int		keyDetector::keysCounterFromFile()
 {
-	string	*dictKeyStr = new string[1024];
+	fstream	outFile(textPath);
+	char	symb;
+	bool	dollarSymb = false;
+	bool	firstBracket = false;
+	bool	insideKey = false; //внутри самой переменной
+	bool	firstEntry = true;
+	int		keyCounter = 0;
+
+	if (!outFile.is_open())
+	{
+		cout << ">Reading error" << endl;
+		return (0);
+	}
+	else
+	{
+		while (1)
+		{
+			symb = outFile.get();
+			if (outFile.eof())
+			{
+				break;
+			}
+			else
+			{
+				if (symb == '$')
+					dollarSymb = true;
+				else if ((dollarSymb) && (symb == '('))
+					firstBracket = true;
+				else if ((dollarSymb) && (firstBracket) && symb != ')')
+					insideKey = true;
+				else if ((dollarSymb) && (firstBracket) && (insideKey) && (firstEntry))
+					firstEntry = false;
+				if ((dollarSymb) && (firstBracket) && (symb == ')'))
+				{
+					firstEntry = true;
+					dollarSymb = false;
+					firstBracket = false;
+					insideKey = false;
+					keyCounter++;
+				}
+			}
+		}
+	}
+	keyCounter++; //Для дополнительной строки окончания массива
+	cout << "Counter: " << keyCounter <<  endl;
+	return (keyCounter);
+}
+
+string	*keyDetector::findKeyFromText()
+{
+	string	*dictKeyStr = new string[keyDetector::keysCounterFromFile()];
 	int		keyCounter = 0;
 	fstream	outFile(textPath);
 	char	symb;
