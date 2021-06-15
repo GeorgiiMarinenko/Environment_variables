@@ -2,7 +2,7 @@
 
 keyDetector::keyDetector()
 {
-	textPath = "/Users/georgijmarinenko/Desktop/Programming/Vimpel/Task1-Map/text.txt";
+	textPath = "/Users/georgijmarinenko/Desktop/Git/Environment_variables/text.txt";
 }
 
 keyDetector::~keyDetector()

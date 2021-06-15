@@ -3,7 +3,7 @@
 
 dictParser::dictParser()
 {
-    dictPath = "/Users/georgijmarinenko/Desktop/Programming/Vimpel/Task1-Map/dictionary.txt";
+    dictPath = "/Users/georgijmarinenko/Desktop/Git/Environment_variables/dictionary.txt";
     isValue = false;
 }
 
