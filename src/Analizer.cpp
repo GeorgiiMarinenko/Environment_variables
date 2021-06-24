@@ -15,7 +15,7 @@ int Analizer::strMpAnalizer(map<string, string> mp, string *str)
 	cout << "Analizing.. " << endl;
 	if(file)
 	{
-		for (int i = 0; str[i] != "NULL"; i++)
+		for (int i = 0; str[i] != 0; i++)
 		{
 			it = mp.find(str[i]);
 			if (it == mp.end())
@@ -35,11 +35,11 @@ int Analizer::strMpAnalizer(map<string, string> mp, string *str)
 	}
 }
 
-int Analizer::recordInfo(FILE *file, string key, string value)
+int Analizer::recordInfo(FILE *file, const string& key, string value)
 {
 	fprintf(file,key.c_str(), "%s");
 	fprintf(file, " : ");
-	fprintf(file, (char *)&value, "%s");
+	fprintf(file, value.c_str(), "%s");
 	fprintf(file, "\n");
 	return (0);
 }

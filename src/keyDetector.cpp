@@ -58,6 +58,15 @@ int		keyDetector::keysCounterFromFile()
 	return (keyCounter);
 }
 
+string *changeStr(int index, int keyCounter, string *str)
+{
+	for (int i = index; i < keyCounter; i++)
+	{
+		str[i] = str[i+1];
+	}
+	return (str);
+}
+
 string	*keyDetector::findKeyFromText()
 {
 	string	*dictKeyStr = new string[keyDetector::keysCounterFromFile()];
@@ -101,6 +110,20 @@ string	*keyDetector::findKeyFromText()
 					firstBracket = false;
 					keyCounter++;
 				}
+			}
+		}
+	}
+	cout << "1KC: " << keyCounter << "\n";
+	for (int i = 0; i < (keyCounter - 1); i++)
+	{
+		cout << " deb: " << dictKeyStr[i] << endl;
+		for (int j = i + 1; j < keyCounter; j++)
+		{
+			if (dictKeyStr[i] == dictKeyStr[j])
+			{
+				dictKeyStr = changeStr(j, keyCounter, dictKeyStr);
+				keyCounter--;
+				cout << "KC: " << keyCounter << "\n";
 			}
 		}
 	}
