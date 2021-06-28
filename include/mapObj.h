@@ -9,11 +9,11 @@ class mapObj
 private:
 
 public:
-	map<string, string> envVariablesMap;
-	map <string, string>::iterator it;
 	mapObj();
 	~mapObj();
-	map<string, string>	setMap();
+	map<string, string>				envVariablesMap;
+	map <string, string>::iterator	it;
+	map<string, string>				setMap();
 };
 
 #endif

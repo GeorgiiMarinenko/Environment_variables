@@ -8,22 +8,21 @@ using namespace std;
 
 struct mapArgStruct
 	{
-		string  Key;
-		string  Value;
+		string	Key;
+		string	Value;
 	};
 
 class dictParser
 {
 private:
-	string  dictPath;
-	string  textPath;
-	bool    isValue;
+	string	dictPath;
+	string	textPath;
+	bool	isValue;
 
 public:
-	// typedef map<string, string> mapArg;
 	dictParser();
 	~dictParser();
-	map<string, string> dctParser();
+	map<string, string>	dctParser();
 };
 
 #endif

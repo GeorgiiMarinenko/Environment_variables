@@ -13,8 +13,9 @@ private:
 public:
 	Analizer();
 	~Analizer();
-	int strMpAnalizer(map<string, string> mp, string *str);
-	int recordInfo(FILE * file, string key, string value);
+	int		strMpAnalizer(map<string, string> mp, string *str);
+	int		recordInfo(FILE *file, const string& key, string value);
+	string	findValue(map<string, string> mp, string str);
 };
 
 #endif
