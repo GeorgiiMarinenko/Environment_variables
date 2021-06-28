@@ -9,18 +9,23 @@ SRCS =	$(srcPATH)main.cpp \
 		$(srcPATH)keyDetector.cpp \
 		$(srcPATH)Analizer.cpp
 
-INCLUDES =	$(includePATH)mapObj.h \
-			$(includePATH)dictParser.h \
-			$(includePATH)keyDetector.h \
-			$(includePATH)Analizer.h \
+INCLUDES =	$(srcPATH)mapObj.h \
+			$(srcPATH)dictParser.h \
+			$(srcPATH)keyDetector.h \
+			$(srcPATH)Analizer.h \
 
 CFLAGS = -static
 
 COMPILE = g++
 
-all:
-	bash mapScript.sh
+all: dict message
 	$(COMPILE) $(SRCS) -o $(NAME)
+
+dict:
+	bash mapScript.sh
+
+message:
+	echo "\033[37;1;45mкомпиляция\033[0m"
 
 fclean: clean
 	rm -f $(NAME)

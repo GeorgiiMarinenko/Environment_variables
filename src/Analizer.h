@@ -9,7 +9,7 @@ using namespace std;
 class Analizer
 {
 private:
-	// char outPath;
+	string outPath;
 public:
 	Analizer();
 	~Analizer();
