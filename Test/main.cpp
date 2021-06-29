@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	// string textFilePath =  string(argv[2]);
 
 	/// MODE 2
-	int		mode = 0;
+	int		mode = 1;
 	char	zero[2] = {"0"};
 	char	one[2] = {"1"};
 	if (argc != 2)
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
 
 	string	dictFilePath2 = "dict2.txt";
 	string	textFilePath2 =  "text2.txt";
-	string	res2;
+	string	res2 = "0";
 	string	orig_res2;
 	res2 = cpu(dictFilePath2, textFilePath2);
 	if (mode == 1)
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 
 	string dictFilePath3 = "dict3.txt";
 	string textFilePath3 =  "text3.txt";
-	string	res3;
+	string	res3 = "0";
 	string	orig_res3;
 	res3 = cpu(dictFilePath3, textFilePath3);
 	if (mode == 1)

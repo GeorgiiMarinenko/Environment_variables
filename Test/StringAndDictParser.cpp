@@ -2,8 +2,6 @@
 
 parser::parser()
 {
-	textPath = "text1.txt";
-	dictPath = "dict1.txt";
 	isValue = false;
 }
 
@@ -90,9 +88,9 @@ string	*parser::findKeyFromText()
 	return (dictKeyStr);
 }
 
-string parser::getStringFromFile()
+string parser::getStringFromFile(const string &textFilePath)
 {
-	fstream	outFile(textPath);
+	fstream	outFile(textFilePath);
 	string	fileStr;
 	char	buffer[4096];
 
@@ -102,10 +100,10 @@ string parser::getStringFromFile()
 	return (fileStr);
 }
 
-map<string, string> parser::dctParser()
+map<string, string> parser::dctParser(const string &dictFilePath)
 {
 	char			symb;
-	fstream			outFile(dictPath);
+	fstream			outFile(dictFilePath);
 	mapArgStruct	tmp;
 	parser		dictMap;
 

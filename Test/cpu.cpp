@@ -17,9 +17,9 @@ string	cpu(const string &dictFilePath, const string &textFilePath)
 	int								*pi;
 
 	pi = &i;
-	strText = Parser.getStringFromFile();
+	strText = Parser.getStringFromFile(textFilePath);
 	// strText = Parser.findKeyFromText(); // Получение строки с содержимым текстового файла
-	mp = Parser.dctParser(); // Считали словарь в контейнер
+	mp = Parser.dctParser(dictFilePath); // Считали словарь в контейнер
 	int strSize = strText.length();
 	for (int i = 0; i < strSize; i++)
 	{

@@ -25,9 +25,9 @@ public:
 	parser();
 	~parser();
 	// string							findKeyFromText();
-	string							getStringFromFile();
+	string							getStringFromFile(const string &textFilePath);
 	int								keysCounterFromFile();
-	map<string, string>				dctParser();
+	map<string, string>				dctParser(const string &dictFilePath);
 	string*							findKeyFromText();
 
 	map<string, string>				envVariablesMap;
