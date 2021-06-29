@@ -10,9 +10,11 @@ SRCS =	main.cpp \
 CFLAGS = -static
 
 COMPILE = g++
+CLEAR_LINE = \033[2K\c
 
 all: dict message
 	$(COMPILE) $(SRCS) -o $(NAME)
+	@bash info.sh
 
 dict:
 	bash mapScript.sh

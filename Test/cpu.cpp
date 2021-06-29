@@ -2,18 +2,19 @@
 #include "StringAndDictParser.h"
 #include "../TemplateAnalizer/Analizer.h"
 
-int	cpu(string dictFilePath, string textFilePath)
+string	cpu(const string &dictFilePath, const string &textFilePath)
 {
-	Analizer						analize; // From original function
+	//Инициализация map & string
+	map <string, string>			mp;
+	map<string, string>::iterator	it;
+	string							resStrFile;
+	Analizer						analize; // Obj from orig. testing func
 	parser							Parser;
 
 	string							strText;
-	map <string, string>			mp;
-	map<string, string>::iterator	it;
 	size_t							foundIndex;
 	int								i = 0;
 	int								*pi;
-	string							resStrFile;
 
 	pi = &i;
 	strText = Parser.getStringFromFile();
@@ -28,6 +29,6 @@ int	cpu(string dictFilePath, string textFilePath)
 		else
 			resStrFile += analize.findValue(mp, strText, &i);
 	}
-	cout << "res = " << resStrFile << endl;
-	return (0);
+	// cout << "res = " << resStrFile << endl;
+	return (resStrFile);
 }

@@ -2,8 +2,8 @@
 
 parser::parser()
 {
-	textPath = "text.txt";
-	dictPath = "dictionary.txt";
+	textPath = "text1.txt";
+	dictPath = "dict1.txt";
 	isValue = false;
 }
 
@@ -67,7 +67,7 @@ string	*parser::findKeyFromText()
 		cout << ">Reading error" << endl;
 		return (0);
 	}
-	cout << ">Searching keys..." << endl;
+	// cout << ">Searching keys..." << endl;
 	while (!outFile.eof())
 	{
 		symb = outFile.get();
@@ -85,7 +85,7 @@ string	*parser::findKeyFromText()
 		}
 	}
 	outFile.close();
-	cout << ">File closed" << endl;
+	// cout << ">File closed" << endl;
 	dictKeyStr[keyCounter] = "NULL";
 	return (dictKeyStr);
 }
@@ -114,7 +114,7 @@ map<string, string> parser::dctParser()
 		cout << ">Reading error" << endl;
 		return (dictMap.envVariablesMap);
 	}
-	cout << ">File is reading..." << endl;
+	// cout << ">File is reading..." << endl;
 	while (!outFile.eof()) // while (1)
 	{
 		symb = outFile.get();
@@ -137,7 +137,6 @@ map<string, string> parser::dctParser()
 		{
 			isValue = false;
 			dictMap.envVariablesMap[tmp.Key] = tmp.Value;
-			// cout << tmp.Key << "=" << tmp.Value << endl;
 			tmp.Value.clear();
 			tmp.Key.clear();
 			continue;
@@ -145,6 +144,6 @@ map<string, string> parser::dctParser()
 		!isValue ? tmp.Key += symb : tmp.Value += symb;
 	}
 	outFile.close();
-	cout << ">File closed" <<  endl;
+	// cout << ">File closed" <<  endl;
 	return (dictMap.envVariablesMap);
 }

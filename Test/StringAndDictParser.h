@@ -6,6 +6,8 @@
 #include <map>
 #include <fstream>
 using namespace std;
+#define ZERO 0
+#define ONE 1
 
 struct mapArgStruct
 	{
