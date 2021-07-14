@@ -17,6 +17,7 @@ public:
 	string	findValue(map<string, string> mp, string str, int* p_strIndex);
 	// Поиск ключа в строке
 	string	findValueFromText(const string& str, int* p_strIndex);
+	void	processString(const string& str);
 };
 
 #endif

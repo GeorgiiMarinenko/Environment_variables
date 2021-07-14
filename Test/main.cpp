@@ -2,7 +2,7 @@
 #include <map>
 #include <string>
 #include "StringAndDictParser.h"
-#include "cpu.cpp"
+#include "processData.cpp"
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -17,22 +17,23 @@ int main(int argc, char* argv[])
 	// string textFilePath =  string(argv[2]);
 
 	/// MODE 2
-	int		mode = 1;
-	char	zero[2] = {"0"};
-	char	one[2] = {"1"};
+	string argv1 = argv[1];
+	int		mode = 0;
+	// Для сравнения не работает
+	// const char*	zero = "0";
+	// const char*	one = "1";
 	if (argc != 2)
 		return (-1);
-	else if ( argv[1] == zero)
+	else if (argv1 == "0")
 		mode = 0;
-	else if (argv[1] == one)
+	else if (argv1 == "1")
 		mode = 1;
-
 	string	dictFilePath1 = "dict1.txt";
 	string	textFilePath1 =  "text1.txt";
 	string	res1;
 	string	orig_res1 = "Hello! My name is georgijmarinenko.\nMy SHELL is located on /bin/zsh - this is the exact path!\nMy computer language: ru_RU.UTF-8\nHOME dir: /Users/georgijmarinenko\nBe like my color, I mean - truecolor\n\0";
 
-	res1 = cpu(dictFilePath1, textFilePath1);
+	res1 = processData(dictFilePath1, textFilePath1);
 	if (mode == 1)
 		cout << "\nreference:\n" << orig_res1 << "\n\nfunction result:\n" << res1 << endl;
 	if (res1 == orig_res1)
@@ -44,7 +45,7 @@ int main(int argc, char* argv[])
 	string	textFilePath2 =  "text2.txt";
 	string	res2 = "0";
 	string	orig_res2;
-	res2 = cpu(dictFilePath2, textFilePath2);
+	res2 = processData(dictFilePath2, textFilePath2);
 	if (mode == 1)
 		cout << "\nreference:\n" << orig_res2 << "\n\nfunction result:\n" << res2 << endl;
 	if (res2 == orig_res2)
@@ -54,9 +55,9 @@ int main(int argc, char* argv[])
 
 	string dictFilePath3 = "dict3.txt";
 	string textFilePath3 =  "text3.txt";
-	string	res3 = "0";
+	string	res3;
 	string	orig_res3;
-	res3 = cpu(dictFilePath3, textFilePath3);
+	res3 = processData(dictFilePath3, textFilePath3);
 	if (mode == 1)
 		cout << "\nreference:\n" << orig_res3 << "\n\nfunction result:\n" << res3 << endl;
 	if (res3 == orig_res3)

@@ -1,4 +1,5 @@
 #include "Analizer.h"
+#include "includeKey.cpp"
 
 Analizer::Analizer()
 {}
@@ -13,10 +14,8 @@ string Analizer::findValueFromText(const string& str, int* p_strIndex)
 	bool	firstBracket = false;
 	int		i = *p_strIndex;
 
-	resStr.clear();
-	str.c_str();
-
-	while (str.length())
+	int length = str.length();
+	while (i < length) //
 	{
 		if (str[i] == '$')
 			dollarSymb = true;
@@ -36,14 +35,24 @@ string Analizer::findValueFromText(const string& str, int* p_strIndex)
 	return (resStr);
 }
 
+//Подача строки из key на обработку
 string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 {
 	map<string, string>::iterator	it;
 	string							editedStr;
 
-	editedStr = findValueFromText(str, p_strIndex);
+	editedStr = findValueFromText(str, p_strIndex); //Получение содержимого в $(...)
+	//Обработка содержимого
 	it = mp.find(editedStr);
+	processString(editedStr);
 	// cout << it->first << " : " << it->second << endl;
 	return (it->second);
 }
 
+void Analizer::processString(const string& str)
+{
+	string::size_type start;
+	start = str.find("include");
+	if (start != string::npos)
+		parseFile(includeKey(str));
+}

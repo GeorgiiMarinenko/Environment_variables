@@ -21,7 +21,7 @@ int		parser::keysCounterFromFile()
 	if (!outFile.is_open())
 	{
 		cout << ">Reading error" << endl;
-		return (0);
+		return (-1);
 	}
 	else
 	{

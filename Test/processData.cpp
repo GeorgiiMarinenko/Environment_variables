@@ -2,7 +2,7 @@
 #include "StringAndDictParser.h"
 #include "../TemplateAnalizer/Analizer.h"
 
-string	cpu(const string &dictFilePath, const string &textFilePath)
+string	processData(const string &dictFilePath, const string &textFilePath)
 {
 	//Инициализация map & string
 	map <string, string>			mp;
@@ -12,7 +12,6 @@ string	cpu(const string &dictFilePath, const string &textFilePath)
 	parser							Parser;
 
 	string							strText;
-	size_t							foundIndex;
 	int								i = 0;
 	int								*pi;
 
