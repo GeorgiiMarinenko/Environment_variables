@@ -46,7 +46,6 @@ int parseFile(const string& fileName)
 	string	text;
 	char	ch;
 
-	// cout << "fName " << fileName <<  endl;
 	if (!outFile.is_open())
 	{
 		cout << ">Reading error" << endl;
