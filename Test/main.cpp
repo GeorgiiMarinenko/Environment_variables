@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
 	string	orig_res1 = "Hello! My name is georgijmarinenko.\nMy SHELL is located on /bin/zsh - this is the exact path!\nMy computer language: ru_RU.UTF-8\nHOME dir: /Users/georgijmarinenko\nBe like my color, I mean - truecolor\n\0";
 
 	res1 = processData(dictFilePath1, textFilePath1);
+	cout << "\n\nfunction result:\n" << res1 << endl;
 	// if (mode == 1)
 	// 	cout << "\nreference:\n" << orig_res1 << "\n\nfunction result:\n" << res1 << endl;
 	// if (res1 == orig_res1)

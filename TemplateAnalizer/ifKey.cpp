@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <map>
 using namespace std;
 
 /*
@@ -53,11 +54,17 @@ int signDetector(int strSize, int* p_strIndex, const string& str)
 	}
 	return (sign);
 }
+string findValue()
+{
+	string value;
 
-string varFinder(const string& str)
+	return (value);
+}
+string varFinder(const string& str, map<string, string> mp)
 {
 	string	res;
 	string	variable;
+	string	value;
 	int		curPos = 0;
 	int		*p_curPos = NULL;
 	int		strSize = 0;
@@ -99,6 +106,7 @@ string varFinder(const string& str)
 				p_curPos = &curPos;
 				sign = signDetector(strSize, p_curPos, str);
 				cout << "sign: " << sign << endl;
+				break;
 			}
 		}
 	}
