@@ -3,13 +3,65 @@
 #include <fstream>
 using namespace std;
 
+/*
+/ == - 0
+/ != - 1
+/ <= - 2
+/ >= - 3
+/ < - 4
+/ > - 5
+*/
+int signDetector(int strSize, int* p_strIndex, const string& str)
+{
+	int	sign = -1;
+	int	curPos = *p_strIndex;
+
+	while ((str[curPos] == ' ') && (curPos < strSize))
+		curPos++;
+	while (((str[curPos] >= '<') && (str[curPos] <= '>')) || (str[curPos] == '!'))
+	{
+		if (str[curPos] == '=' && str[curPos + 1] == '=')
+		{
+			sign = 0;
+			curPos += 2;
+		}
+		else if (str[curPos] == '!' && str[curPos + 1] == '=')
+		{
+			sign = 1;
+			curPos += 2;
+		}
+		else if (str[curPos] == '<' && str[curPos + 1] == '=')
+		{
+			sign = 2;
+			curPos += 2;
+		}
+		else if (str[curPos] == '>' && str[curPos + 1] == '=')
+		{
+			sign = 3;
+			curPos += 2;
+		}
+		else if (str[curPos] == '<')
+		{
+			sign = 4;
+			curPos++;;
+		}
+		else if (str[curPos] == '>')
+		{
+			sign = 5;
+			curPos++;;
+		}
+	}
+	return (sign);
+}
+
 string varFinder(const string& str)
 {
 	string	res;
 	string	variable;
-	int		i = 0;
-	// bool	ifFound = false;
+	int		curPos = 0;
+	int		*p_curPos = NULL;
 	int		strSize = 0;
+	int		sign = -1;
 	// int		length = 0;
 	// int		finish = 0;
 	string::size_type start;
@@ -18,13 +70,13 @@ string varFinder(const string& str)
 	start = str.find("if");
 	if (start != string::npos)
 	{
-		i = (int)start;
-		while (i < strSize)
+		curPos = (int)start;
+		while (curPos < strSize)
 		{
-			i++;
-			while (i < strSize)
+			curPos++;
+			while (curPos < strSize)
 			{
-				i++;
+				curPos++;
 				/*
 				if [var == val]
 				{
@@ -35,37 +87,22 @@ string varFinder(const string& str)
 					...
 				}
 				*/
-				while ((str[i - 1] != '[') && (i < strSize))
-					i++;
-				// cout << "!" << str[i];
-				while ((str[i] == ' ') && (i < strSize))
-					i++;
-				while ((str[i] >= 'a') && (str[i] <= 'z'))
+				while ((str[curPos - 1] != '[') && (curPos < strSize))
+					curPos++;
+				while ((str[curPos] == ' ') && (curPos < strSize))
+					curPos++;
+				while ((str[curPos] >= 'a') && (str[curPos] <= 'z'))
 				{
-					variable += str[i];
-					i++;
+					variable += str[curPos];
+					curPos++;
 				}
-				if (str[i] == ']')
-					break;
+				p_curPos = &curPos;
+				sign = signDetector(strSize, p_curPos, str);
+				cout << "sign: " << sign << endl;
 			}
 		}
 	}
 	return variable;
-}
-
-/*
-/ == - 0
-/ != - 1
-/ < - 2
-/ > - 3
-/ <= - 4
-/ >= - 5
-*/
-int signDetector()
-{
-	int sign = -1;
-
-	return (sign);
 }
 
 int keyValueAnalizer()
