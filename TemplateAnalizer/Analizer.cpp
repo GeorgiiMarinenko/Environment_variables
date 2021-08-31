@@ -1,5 +1,6 @@
 #include "Analizer.h"
 #include "includeKey.cpp"
+#include "ifKey.cpp"
 
 Analizer::Analizer()
 {}
@@ -51,8 +52,13 @@ string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 
 void Analizer::processString(const string& str)
 {
-	string::size_type start;
-	start = str.find("include");
-	if (start != string::npos)
+	string::size_type include_sign;
+	string::size_type if_sign;
+	string testStr;
+	if_sign = str.find("if");
+	include_sign = str.find("include");
+	if ((include_sign != string::npos) && (if_sign == string::npos))
 		parseFile(includeKey(str));
+	else if ((include_sign == string::npos) && (if_sign != string::npos))
+		testStr = varFinder(str);
 }
