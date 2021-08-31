@@ -1,1 +1,0 @@
-qwertyusdfg $(USER)
