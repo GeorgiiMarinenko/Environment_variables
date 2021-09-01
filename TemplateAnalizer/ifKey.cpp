@@ -69,6 +69,7 @@ string varFinder(const string& str, map<string, string> mp)
 	int		*p_curPos = NULL;
 	int		strSize = 0;
 	int		sign = -1;
+	(void)mp;
 	// int		length = 0;
 	// int		finish = 0;
 	string::size_type start;

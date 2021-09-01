@@ -2,6 +2,11 @@
 #include "StringAndDictParser.h"
 #include "../TemplateAnalizer/Analizer.h"
 
+/*
+ - Получение строки с содержимым текстового файла,
+ - Чтение словаря в контейнер,
+ - Начало обработки считанного текста из файла
+*/
 string	processData(const string &dictFilePath, const string &textFilePath)
 {
 	//Инициализация map & string
@@ -22,12 +27,10 @@ string	processData(const string &dictFilePath, const string &textFilePath)
 	int strSize = strText.length();
 	for (int i = 0; i < strSize; i++)
 	{
-		// cout << "i = " << i << endl;
 		if (strText[i] != '$')
 			resStrFile += strText[i];
 		else
 			resStrFile += analize.findValue(mp, strText, &i);
 	}
-	// cout << "res = " << resStrFile << endl;
 	return (resStrFile);
 }

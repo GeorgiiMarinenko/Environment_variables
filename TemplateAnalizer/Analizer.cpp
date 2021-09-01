@@ -45,12 +45,22 @@ string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 	editedStr = findValueFromText(str, p_strIndex); //Получение содержимого в $(...)
 	//Обработка содержимого
 	it = mp.find(editedStr);
-	processString(editedStr, mp);
+	if (it == mp.end())
+	{
+		string::size_type include_sign;
+		string::size_type if_sign;
+
+		if_sign = editedStr.find("if");
+		include_sign = editedStr.find("include");
+		if ((include_sign != string::npos) && (if_sign == string::npos))
+			return (parseFile(includeKey(str)));
+	}
+	// resp = processString(editedStr, mp);
 	// cout << it->first << " : " << it->second << endl;
 	return (it->second);
 }
 
-void Analizer::processString(const string& str, map<string, string> mp)
+int Analizer::processString(const string& str, map<string, string> mp)
 {
 	string::size_type include_sign;
 	string::size_type if_sign;
@@ -61,4 +71,9 @@ void Analizer::processString(const string& str, map<string, string> mp)
 		parseFile(includeKey(str));
 	else if ((include_sign == string::npos) && (if_sign != string::npos))
 		testStr = varFinder(str, mp);
+	else
+	{
+		return (-1);
+	}
+	return (0);
 }

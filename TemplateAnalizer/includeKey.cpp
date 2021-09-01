@@ -40,7 +40,7 @@ string includeKey(const string& str)
 	return (fileName);
 }
 
-int parseFile(const string& fileName)
+string parseFile(const string& fileName)
 {
 	fstream	outFile(fileName);
 	string	text;
@@ -49,7 +49,7 @@ int parseFile(const string& fileName)
 	if (!outFile.is_open())
 	{
 		cout << ">Reading error" << endl;
-		return (-1);
+		return (0);
 	}
 	else
 	{
@@ -58,7 +58,7 @@ int parseFile(const string& fileName)
 			outFile.get(ch);
 			text += ch;
 		}
-		cout << "\nFrom file: " << text << endl;
+		// cout << "\nFrom file: " << text << endl;
 	}
-	return (0);
+	return (text);
 }
