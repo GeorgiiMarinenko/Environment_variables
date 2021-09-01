@@ -41,6 +41,7 @@ string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 {
 	map<string, string>::iterator	it;
 	string							editedStr;
+	string							testStr;
 
 	editedStr = findValueFromText(str, p_strIndex); //Получение содержимого в $(...)
 	//Обработка содержимого
@@ -54,6 +55,13 @@ string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 		include_sign = editedStr.find("include");
 		if ((include_sign != string::npos) && (if_sign == string::npos))
 			return (parseFile(includeKey(str)));
+		else if ((include_sign == string::npos) && (if_sign != string::npos))
+			return (varFinder(str, mp));
+		else
+		{
+			cout << "Конструкция " << editedStr << "не найдена или введена не верно" << endl;
+			return ("----------->Incorrect value");
+		}
 	}
 	// resp = processString(editedStr, mp);
 	// cout << it->first << " : " << it->second << endl;

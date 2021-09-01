@@ -1,5 +1,12 @@
 Hello! My name is $(USER).
 $(include <file.txt>)
+$(if [key <= 5]
+{
+	TextTextTextTextText
+	TextTextTextTextText
+	TextTextText
+	TextTextTextTextText
+})
 My SHELL is located on $(SHELL) - this is the exact path!
 My computer language: $(LANG)
 HOME dir: $(HOME)
