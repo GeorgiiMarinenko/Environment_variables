@@ -44,7 +44,7 @@ string parseFile(const string& fileName)
 {
 	fstream	outFile(fileName);
 	string	text;
-	char	ch;
+	string	str;
 
 	if (!outFile.is_open())
 	{
@@ -53,11 +53,12 @@ string parseFile(const string& fileName)
 	}
 	else
 	{
-		while (!outFile.eof())
+		while (getline(outFile, str))
 		{
-			outFile.get(ch);
-			text += ch;
+			text += str;
+			text += '\n';
 		}
+
 		// cout << "\nFrom file: " << text << endl;
 	}
 	return (text);
