@@ -1,11 +1,17 @@
 Hello! My name is $(USER).
 $(include <file.txt>)
-$(if [key <= 5]
+$(if [key <= 6]
 {
-	TextTextTextTextText
-	TextTextTextTextText
-	TextTextText
-	TextTextTextTextText
+	TextTextTextTextText0
+	TextTextTextTextText1
+	TextTextText2
+	TextTextTextTextText3
+}
+else
+{
+	ElseTextElseText0
+	ElseText1
+	ElseTextElseTextElseText2
 })
 My SHELL is located on $(SHELL) - this is the exact path!
 My computer language: $(LANG)
