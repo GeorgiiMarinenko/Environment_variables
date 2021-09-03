@@ -83,7 +83,6 @@ string	*parser::findKeyFromText()
 		}
 	}
 	outFile.close();
-	// cout << ">File closed" << endl;
 	dictKeyStr[keyCounter] = "NULL";
 	return (dictKeyStr);
 }
@@ -112,20 +111,9 @@ map<string, string> parser::dctParser(const string &dictFilePath)
 		cout << ">Reading error" << endl;
 		return (dictMap.envVariablesMap);
 	}
-	// cout << ">File is reading..." << endl;
 	while (!outFile.eof()) // while (1)
 	{
 		symb = outFile.get();
-		// if (outFile.eof())
-		// {
-		// 	// dictMap.envVariablesMap[tmp.Key] = tmp.Value; активен только в том случае, если файл ключей и значений не генерирует последней строкой пустую строку
-		// 	// dictMap.envVariablesMap[tmp.Key] = tmp.Value;
-		// 	tmp.Value.clear();
-		// 	tmp.Key.clear();
-		// 	cout << ">End of file" << endl;
-		// 	break;
-		// }
-
 		if (symb == '=')
 		{
 			isValue = true;
@@ -142,6 +130,5 @@ map<string, string> parser::dctParser(const string &dictFilePath)
 		!isValue ? tmp.Key += symb : tmp.Value += symb;
 	}
 	outFile.close();
-	// cout << ">File closed" <<  endl;
 	return (dictMap.envVariablesMap);
 }

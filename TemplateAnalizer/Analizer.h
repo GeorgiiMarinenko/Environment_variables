@@ -9,7 +9,7 @@ using namespace std;
 class Analizer
 {
 private:
-	string outPath;
+	string	outPath;
 public:
 	Analizer();
 	~Analizer();
@@ -17,7 +17,7 @@ public:
 	string	findValue(map<string, string> mp, string str, int* p_strIndex);
 	// Поиск ключа в строке
 	string	findValueFromText(const string& str, int* p_strIndex);
-	int	processString(const string& str, map<string, string> mp);
+	int		processString(const string& str, map<string, string> mp);
 };
 
 #endif

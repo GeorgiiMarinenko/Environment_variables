@@ -63,8 +63,6 @@ string Analizer::findValue(map<string, string> mp, string str, int* p_strIndex)
 			return ("----------->Incorrect value");
 		}
 	}
-	// resp = processString(editedStr, mp);
-	// cout << it->first << " : " << it->second << endl;
 	return (it->second);
 }
 
@@ -80,8 +78,6 @@ int Analizer::processString(const string& str, map<string, string> mp)
 	else if ((include_sign == string::npos) && (if_sign != string::npos))
 		testStr = varFinder(str, mp);
 	else
-	{
 		return (-1);
-	}
 	return (0);
 }

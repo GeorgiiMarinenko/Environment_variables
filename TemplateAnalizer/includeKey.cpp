@@ -58,8 +58,6 @@ string parseFile(const string& fileName)
 			text += str;
 			text += '\n';
 		}
-
-		// cout << "\nFrom file: " << text << endl;
 	}
 	return (text);
 }

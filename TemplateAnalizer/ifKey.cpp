@@ -143,16 +143,16 @@ string solution(bool isEqual, int* p_strIndex, const string& str)
 }
 string varFinder(const string& str, map<string, string> mp)
 {
-	string	res;
-	string	variable;
-	string	varValue;
-	string	origValue;
-	bool	isEqual = false;
-	int		curPos = 0;
-	int		*p_curPos = NULL;
-	int		strSize = 0;
-	int		sign = -1;
-	string::size_type start;
+	string				res;
+	string				variable;
+	string				varValue;
+	string				origValue;
+	bool				isEqual = false;
+	int					curPos = 0;
+	int					*p_curPos = NULL;
+	int					strSize = 0;
+	int					sign = -1;
+	string::size_type	start;
 
 	strSize = str.length();
 	start = str.find("if");
@@ -182,7 +182,6 @@ string varFinder(const string& str, map<string, string> mp)
 		varValue = findKeyValue(mp, variable); // Определение значения переменной
 		p_curPos = &curPos;
 		sign = signDetector(strSize, p_curPos, str); // Определение кода знака сравнения
-		// cout << "-- " << str[*p_curPos] << endl;
 		curPos = *p_curPos;
 		while ((str[curPos] == ' ') && (curPos < strSize))
 			curPos++;
@@ -194,11 +193,9 @@ string varFinder(const string& str, map<string, string> mp)
 			curPos++;
 		}
 		*p_curPos = curPos;
-		// cout << "Orig value: " << origValue << endl;
 		// Сравнение
 		if (strcmp(varValue.c_str(), origValue.c_str()) == 0)
 			isEqual = true;
-		// cout << "compar: " << isEqual << endl;
 	}
 	return (solution(isEqual, p_curPos, str));
 }
